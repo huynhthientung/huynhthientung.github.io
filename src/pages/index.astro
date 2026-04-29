@@ -1,0 +1,48 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Hero from '../components/Hero.astro';
+import Experience from '../components/Experience.astro';
+import Skills from '../components/Skills.astro';
+import Education from '../components/Education.astro';
+import Certifications from '../components/Certifications.astro';
+import SubSites from '../components/SubSites.astro';
+import Footer from '../components/Footer.astro';
+---
+
+<Layout>
+  <main class="max-w-[680px] mx-auto px-6">
+    <Hero />
+
+    <hr class="border-slate-100 dark:border-slate-900 my-2" />
+
+    <div class="py-12">
+      <Experience />
+    </div>
+
+    <hr class="border-slate-100 dark:border-slate-900" />
+
+    <div class="py-12">
+      <Skills />
+    </div>
+
+    <hr class="border-slate-100 dark:border-slate-900" />
+
+    <div class="py-12">
+      <Education />
+    </div>
+
+    <hr class="border-slate-100 dark:border-slate-900" />
+
+    <div class="py-12">
+      <Certifications />
+    </div>
+
+    <hr class="border-slate-100 dark:border-slate-900" />
+
+    <div class="py-12">
+      <SubSites />
+    </div>
+  </main>
+
+  <Footer />
+</Layout>

@@ -1,0 +1,89 @@
+---
+interface Job {
+  company: string;
+  role: string;
+  period: string;
+  project?: string;
+  bullets: string[];
+}
+
+const jobs: Job[] = [
+  {
+    company: 'ITRVN',
+    role: 'Cloud / DevOps Engineer',
+    period: 'Jun 2025 — Present',
+    project: 'US-based digital health & wearable medical devices platform',
+    bullets: [
+      'Operate EKS clusters and CI/CD pipelines for a US production healthcare platform',
+      'Built a Golang-based AI tool that detects CVEs and assigns remediation tasks to developers',
+      'Led AWS account and data migration for a $20K/month production environment',
+      'Deployed AI/ML workloads on Kubernetes; ran an internal seminar on AI Agentic systems',
+      'Maintained cloud data pipelines and campaign delivery systems in production',
+      'Enforced security and compliance practices; optimized performance and cloud cost',
+    ],
+  },
+  {
+    company: 'Splus Software',
+    role: 'Backend / Cloud / DevOps Engineer',
+    period: 'Oct 2022 — May 2025',
+    project: 'Semiconductor machine control system — outsourcing for a Japanese customer',
+    bullets: [
+      'Implemented REST and WebSocket APIs for a next-gen semiconductor control platform',
+      'Designed serverless AWS architecture and CI/CD pipelines; cut pipeline cost by ~50%',
+      'Built CI/CD infrastructure on AWS CodeBuild and CodePipeline from HLD to production',
+      'Automated internal tooling: budget alerts, CloudTrail-to-Slack alerts, and software installers',
+      'Managed AWS cost and resource hygiene across 6 production accounts',
+      'Maintained legacy C++ desktop GUI software for machine control reliability',
+    ],
+  },
+  {
+    company: 'Splus Software',
+    role: 'Team Leader',
+    period: 'Jun 2022 — Apr 2024',
+    project: 'Web scraping system for Japanese real estate and maps data',
+    bullets: [
+      'Defined system architecture, crawling strategy, and database schema for the platform',
+      'Built an extensible, maintainable codebase shared across all crawlers',
+      'Engineered techniques to bypass rate limiting and bot detection at scale',
+      'Delivered a scalable system collecting Japanese real estate and maps data',
+    ],
+  },
+];
+---
+
+<section>
+  <h2 class="text-[11px] font-medium tracking-[0.18em] uppercase text-slate-400 dark:text-slate-500 mb-7">
+    Experience
+  </h2>
+
+  <div class="space-y-10">
+    {jobs.map((job) => (
+      <article>
+        <header class="mb-1">
+          <div class="flex flex-wrap items-baseline justify-between gap-x-3 gap-y-0.5">
+            <h3 class="text-[15px] font-semibold text-slate-900 dark:text-slate-50">
+              {job.company}
+            </h3>
+            <span class="text-[13px] tabular-nums text-slate-500 dark:text-slate-500 shrink-0">
+              {job.period}
+            </span>
+          </div>
+          <p class="text-[14px] text-slate-600 dark:text-slate-400">
+            {job.role}
+          </p>
+          {job.project && (
+            <p class="text-[13px] italic text-slate-500 dark:text-slate-500 mt-0.5">
+              {job.project}
+            </p>
+          )}
+        </header>
+
+        <ul class="mt-3 list-disc pl-[18px] marker:text-slate-300 dark:marker:text-slate-700 space-y-2 text-[14px] text-slate-700 dark:text-slate-300 leading-[1.7]">
+          {job.bullets.map((bullet) => (
+            <li class="pl-1">{bullet}</li>
+          ))}
+        </ul>
+      </article>
+    ))}
+  </div>
+</section>

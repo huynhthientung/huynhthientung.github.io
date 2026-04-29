@@ -1,0 +1,51 @@
+---
+const groups = [
+  {
+    label: 'Cloud (AWS)',
+    items: 'EC2, EKS, EFS, Lambda, S3, RDS, Aurora, DynamoDB, TimestreamDB, CloudFront, WAF, IAM, Cognito, Pinpoint, SQS, SNS, API Gateway, CodeBuild, CodePipeline',
+  },
+  {
+    label: 'Containers & Orchestration',
+    items: 'Docker, Kubernetes (EKS), Helm, Karpenter, ArgoCD',
+  },
+  {
+    label: 'Infrastructure as Code',
+    items: 'AWS CDK (Golang, Python), CloudFormation, Pulumi, Terraform (basic)',
+  },
+  {
+    label: 'CI/CD & Automation',
+    items: 'GitHub Actions, Jenkins, Bash scripting, AWS CodePipeline',
+  },
+  {
+    label: 'Languages',
+    items: 'Golang, Python, C++ (11/14/17), Bash, JavaScript / Node.js',
+  },
+  {
+    label: 'Databases',
+    items: 'PostgreSQL, MySQL, MongoDB, DynamoDB, TimestreamDB, Aurora RDS',
+  },
+  {
+    label: 'Observability',
+    items: 'CloudWatch, Prometheus, Grafana, ELK Stack',
+  },
+];
+---
+
+<section>
+  <h2 class="text-[11px] font-medium tracking-[0.18em] uppercase text-slate-400 dark:text-slate-500 mb-7">
+    Skills
+  </h2>
+
+  <dl class="space-y-5">
+    {groups.map((group) => (
+      <div class="grid grid-cols-1 sm:grid-cols-[180px_1fr] gap-y-1 sm:gap-x-6">
+        <dt class="text-[13px] font-medium text-slate-500 dark:text-slate-400 sm:pt-0.5">
+          {group.label}
+        </dt>
+        <dd class="text-[14px] text-slate-700 dark:text-slate-300 leading-[1.7]">
+          {group.items}
+        </dd>
+      </div>
+    ))}
+  </dl>
+</section>
