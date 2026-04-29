@@ -8,7 +8,7 @@ const sites = [
   },
   {
     title: 'Blog',
-    description: 'Writing on DevOps, cloud infrastructure, and engineering',
+    description: 'Writing on DevOps, cloud, and software engineering',
     href: 'https://blogs.huynhthientung.com',
     domain: 'blogs.huynhthientung.com',
   },
@@ -22,44 +22,40 @@ const sites = [
 ---
 
 <section>
-  <h2 class="text-[11px] font-medium tracking-[0.18em] uppercase text-slate-400 dark:text-slate-500 mb-7">
-    Links
+  <h2 class="text-[12px] font-medium tracking-[0.18em] uppercase text-stone-400 dark:text-stone-500 mb-5">
+    Explore
   </h2>
 
-  <ul class="border-t border-slate-100 dark:border-slate-900">
+  <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
     {sites.map((site) => (
-      <li class="border-b border-slate-100 dark:border-slate-900">
-        <a
-          href={site.href}
-          target="_blank"
-          rel="noopener noreferrer"
-          class="group flex items-baseline justify-between gap-4 py-4"
-        >
-          <div class="min-w-0">
-            <div class="flex items-baseline gap-3">
-              <span class="text-[15px] font-semibold text-slate-900 dark:text-slate-50">
-                {site.title}
-              </span>
-              <span class="text-[13px] tabular-nums text-slate-400 dark:text-slate-600 truncate">
-                {site.domain}
-              </span>
-            </div>
-            <p class="text-[13px] text-slate-500 dark:text-slate-500 mt-1">
-              {site.description}
-            </p>
-          </div>
+      <a
+        href={site.href}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="group flex flex-col gap-2 p-5 rounded-xl border border-stone-200 dark:border-stone-800 bg-white/60 dark:bg-stone-900/40 hover:border-indigo-400/60 dark:hover:border-indigo-500/40 hover:bg-white dark:hover:bg-stone-900 hover:shadow-sm transition-all"
+      >
+        <div class="flex items-center justify-between">
+          <span class="text-[16px] font-semibold text-stone-900 dark:text-stone-50 group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition-colors">
+            {site.title}
+          </span>
           <svg
-            class="w-3.5 h-3.5 mt-1 shrink-0 text-slate-300 dark:text-slate-700 group-hover:text-slate-700 dark:group-hover:text-slate-300 group-hover:translate-x-0.5 transition-all"
+            class="w-4 h-4 text-stone-300 dark:text-stone-700 group-hover:text-indigo-500 dark:group-hover:text-indigo-400 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all"
             fill="none"
             stroke="currentColor"
             stroke-width="2"
             viewBox="0 0 24 24"
             aria-hidden="true"
           >
-            <path d="M9 18l6-6-6-6" stroke-linecap="round" stroke-linejoin="round" />
+            <path d="M7 17L17 7M9 7h8v8" stroke-linecap="round" stroke-linejoin="round" />
           </svg>
-        </a>
-      </li>
+        </div>
+        <p class="text-[14px] text-stone-600 dark:text-stone-400 leading-[1.6]">
+          {site.description}
+        </p>
+        <span class="text-[12px] tabular-nums text-stone-400 dark:text-stone-600 mt-auto pt-1">
+          {site.domain}
+        </span>
+      </a>
     ))}
-  </ul>
+  </div>
 </section>
