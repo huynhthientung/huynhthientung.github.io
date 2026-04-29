@@ -10,10 +10,16 @@ const {
   title = 'Huynh Thien Tung — Cloud/DevOps Engineer',
   description = 'AWS Cloud/DevOps Engineer with experience in Kubernetes, CI/CD, and cloud infrastructure.',
 } = Astro.props;
+
+const navLinks = [
+  { href: 'https://blog.huynhthientung.com', label: 'Blog', external: true },
+  { href: 'https://docs.huynhthientung.com', label: 'Docs', external: true },
+  { href: 'https://github.com/huynhthientung', label: 'GitHub', external: true, hideMobile: true },
+];
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang="en" data-theme="dark">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -21,49 +27,67 @@ const {
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
     <meta name="generator" content={Astro.generator} />
     <title>{title}</title>
+
+    <!-- Fonts — unified with blogs site -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Lora:ital,wght@0,400;0,600;1,400&display=swap"
       rel="stylesheet"
     />
-    <!-- No FOUC: apply dark class before first paint -->
+
+    <!-- Prevent flash of wrong theme — must run before paint -->
     <script is:inline>
-      (function () {
-        const stored = localStorage.getItem('theme');
-        const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-        if (stored === 'dark' || (!stored && prefersDark)) {
-          document.documentElement.classList.add('dark');
-        }
-      })();
+      const t = localStorage.getItem('theme') ?? 'dark';
+      document.documentElement.dataset.theme = t;
     </script>
   </head>
-  <body class="bg-stone-50 dark:bg-stone-950 text-stone-900 dark:text-stone-100 font-sans antialiased">
-    <!-- Top bar -->
-    <header>
-      <div class="max-w-[720px] mx-auto px-6 h-14 flex items-center justify-between">
-        <a href="/" class="text-[12px] font-medium tracking-[0.18em] uppercase text-stone-500 dark:text-stone-400 hover:text-stone-900 dark:hover:text-stone-100 transition-colors">
-          huynhthientung.com
-        </a>
-        <button
-          id="theme-toggle"
-          aria-label="Toggle dark mode"
-          class="p-1.5 rounded text-stone-400 hover:text-stone-700 dark:hover:text-stone-200 transition-colors"
+  <body class="bg-white dark:bg-zinc-950 text-zinc-900 dark:text-zinc-300 font-sans antialiased min-h-screen flex flex-col">
+
+    <!-- Sticky header — matches blogs site -->
+    <header class="sticky top-0 z-40 border-b border-zinc-200 dark:border-zinc-800 bg-white/80 dark:bg-zinc-950/80 backdrop-blur-md">
+      <nav class="max-w-4xl mx-auto px-6 h-14 flex items-center justify-between">
+        <a
+          href="/"
+          class="font-mono font-bold text-zinc-900 dark:text-zinc-200 hover:text-green-700 dark:hover:text-green-400 transition-colors text-sm"
         >
-          <!-- Sun (visible in dark mode) -->
-          <svg id="icon-sun" class="hidden w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true">
-            <circle cx="12" cy="12" r="4"/>
-            <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/>
-          </svg>
-          <!-- Moon (visible in light mode) -->
-          <svg id="icon-moon" class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true">
-            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
-          </svg>
-        </button>
-      </div>
+          tung.dev
+        </a>
+
+        <div class="flex items-center gap-1">
+          <ul class="flex items-center">
+            {navLinks.map(({ href, label, external, hideMobile }) => (
+              <li class={hideMobile ? 'hidden md:block' : ''}>
+                <a
+                  href={href}
+                  class="px-3 py-1.5 text-sm text-zinc-500 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-zinc-200 rounded-md hover:bg-zinc-100 dark:hover:bg-zinc-800 transition-colors"
+                  {...(external ? { target: '_blank', rel: 'noopener' } : {})}
+                >
+                  {label}
+                </a>
+              </li>
+            ))}
+          </ul>
+          <button
+            id="theme-toggle"
+            aria-label="Toggle dark mode"
+            class="ml-1 p-1.5 rounded-md text-zinc-500 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-zinc-200 hover:bg-zinc-100 dark:hover:bg-zinc-800 transition-colors"
+          >
+            <svg id="icon-sun" class="hidden w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true">
+              <circle cx="12" cy="12" r="4"/>
+              <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/>
+            </svg>
+            <svg id="icon-moon" class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+            </svg>
+          </button>
+        </div>
+      </nav>
     </header>
 
-    <slot />
+    <main class="flex-1">
+      <slot />
+    </main>
 
     <script is:inline>
       (function () {
@@ -72,7 +96,7 @@ const {
         var moon = document.getElementById('icon-moon');
 
         function syncIcons() {
-          var isDark = document.documentElement.classList.contains('dark');
+          var isDark = document.documentElement.dataset.theme === 'dark';
           sun.classList.toggle('hidden', !isDark);
           moon.classList.toggle('hidden', isDark);
         }
@@ -80,9 +104,15 @@ const {
         syncIcons();
 
         btn.addEventListener('click', function () {
-          var isDark = document.documentElement.classList.toggle('dark');
-          localStorage.setItem('theme', isDark ? 'dark' : 'light');
+          var current = document.documentElement.dataset.theme;
+          var next = current === 'dark' ? 'light' : 'dark';
+          document.documentElement.classList.add('theme-transition');
+          document.documentElement.dataset.theme = next;
+          localStorage.setItem('theme', next);
           syncIcons();
+          setTimeout(function () {
+            document.documentElement.classList.remove('theme-transition');
+          }, 250);
         });
       })();
     </script>

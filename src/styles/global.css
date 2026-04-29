@@ -1,15 +1,24 @@
 @import "tailwindcss";
 
-@custom-variant dark (&:where(.dark, .dark *));
+/* Dark mode follows data-theme attribute on <html> — unified with blogs site */
+@custom-variant dark (&:where([data-theme="dark"], [data-theme="dark"] *));
 
 @theme {
-  --font-sans: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
-  --font-mono: 'JetBrains Mono', 'Fira Code', monospace;
+  --font-sans:  "Inter",        system-ui, -apple-system, sans-serif;
+  --font-serif: "Lora",         Georgia,   serif;
+  --font-mono:  "JetBrains Mono", ui-monospace, monospace;
+
+  /* Medium-inspired dark palette — shared with blogs site. */
+  --color-zinc-950: #1c1c1c;   /* body bg     */
+  --color-zinc-900: #242424;   /* card bg     */
+  --color-zinc-800: #2d2d2d;   /* borders     */
+  --color-zinc-700: #383838;   /* border hover*/
 }
 
 @layer base {
   html {
-    font-size: 16px;
+    font-size: 17px;
+    line-height: 1.75;
     scroll-behavior: smooth;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
@@ -17,4 +26,12 @@
   *, *::before, *::after {
     box-sizing: border-box;
   }
+}
+
+/* Smooth theme transition — only on user toggle */
+.theme-transition,
+.theme-transition *,
+.theme-transition *::before,
+.theme-transition *::after {
+  transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease !important;
 }
