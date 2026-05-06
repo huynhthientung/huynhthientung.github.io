@@ -9,9 +9,22 @@ interface Job {
 
 const jobs: Job[] = [
   {
+    company: 'VinSmart Future — VinGroup',
+    role: 'Middle MLOps Engineer',
+    period: 'May 2026 — Present',
+    project: 'Large-scale LLM inference infrastructure & AI platform',
+    bullets: [
+      'Operate and maintain an enterprise-scale H200 GPU cluster (one of the largest in Vietnam) powering production LLM services',
+      'Optimize LLM inference throughput and latency using vLLM; own the end-to-end vLLM production serving stack',
+      'Design GPU resource scheduling, multi-tenant isolation, and capacity planning strategies for high-demand AI workloads',
+      'Integrate DevSecOps practices across the AI/ML development lifecycle — from model CI/CD pipelines to container image security and supply-chain hardening',
+      'Collaborate with AI research teams to productionize and reliably serve large language models at scale',
+    ],
+  },
+  {
     company: 'ITRVN',
     role: 'Cloud / DevOps Engineer',
-    period: 'Jun 2025 — Present',
+    period: 'Jun 2025 — Apr 2026',
     project: 'US-based digital health & wearable medical devices platform',
     bullets: [
       'Operate EKS clusters and CI/CD pipelines for a US production healthcare platform',
@@ -52,7 +65,7 @@ const jobs: Job[] = [
 ---
 
 <section>
-  <h2 class="text-[12px] font-medium tracking-[0.18em] uppercase text-zinc-400 dark:text-zinc-500 mb-7">
+  <h2 class="text-[12px] font-medium tracking-[0.18em] uppercase text-zinc-500 dark:text-zinc-500 mb-7">
     Experience
   </h2>
 
@@ -78,7 +91,7 @@ const jobs: Job[] = [
           )}
         </header>
 
-        <ul class="mt-3 list-disc pl-[18px] marker:text-zinc-300 dark:marker:text-zinc-700 space-y-2 text-[15px] text-zinc-700 dark:text-zinc-300 leading-[1.7]">
+        <ul class="mt-3 list-disc pl-[18px] marker:text-zinc-400 dark:marker:text-zinc-600 space-y-2 text-[15px] text-zinc-700 dark:text-zinc-300 leading-[1.7]">
           {job.bullets.map((bullet) => (
             <li class="pl-1">{bullet}</li>
           ))}
