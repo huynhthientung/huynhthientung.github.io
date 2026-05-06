@@ -2,31 +2,31 @@
 const groups = [
   {
     label: 'Cloud (AWS)',
-    items: 'EC2, EKS, EFS, Lambda, S3, RDS, Aurora, DynamoDB, TimestreamDB, CloudFront, WAF, IAM, Cognito, Pinpoint, SQS, SNS, API Gateway, CodeBuild, CodePipeline',
+    items: ['EC2', 'EKS', 'EFS', 'Lambda', 'S3', 'RDS', 'Aurora', 'DynamoDB', 'TimestreamDB', 'CloudFront', 'WAF', 'IAM', 'Cognito', 'Pinpoint', 'SQS', 'SNS', 'API Gateway', 'CodeBuild', 'CodePipeline'],
   },
   {
     label: 'Containers & Orchestration',
-    items: 'Docker, Kubernetes (EKS), Helm, Karpenter, ArgoCD',
+    items: ['Docker', 'Kubernetes (EKS)', 'Helm', 'Karpenter', 'ArgoCD'],
   },
   {
     label: 'Infrastructure as Code',
-    items: 'AWS CDK (Golang, Python), CloudFormation, Pulumi, Terraform (basic)',
+    items: ['AWS CDK (Golang, Python)', 'CloudFormation', 'Pulumi', 'Terraform'],
   },
   {
     label: 'CI/CD & Automation',
-    items: 'GitHub Actions, Jenkins, Bash scripting, AWS CodePipeline',
+    items: ['GitHub Actions', 'Jenkins', 'Bash scripting', 'AWS CodePipeline'],
   },
   {
     label: 'Languages',
-    items: 'Golang, Python, C++ (11/14/17), Bash, JavaScript / Node.js',
+    items: ['Golang', 'Python', 'C++ (11/14/17)', 'Bash', 'JavaScript / Node.js'],
   },
   {
     label: 'Databases',
-    items: 'PostgreSQL, MySQL, MongoDB, DynamoDB, TimestreamDB, Aurora RDS',
+    items: ['PostgreSQL', 'MySQL', 'MongoDB', 'DynamoDB', 'TimestreamDB', 'Aurora RDS'],
   },
   {
     label: 'Observability',
-    items: 'CloudWatch, Prometheus, Grafana, ELK Stack',
+    items: ['CloudWatch', 'Prometheus', 'Grafana', 'ELK Stack'],
   },
 ];
 ---
@@ -38,12 +38,16 @@ const groups = [
 
   <dl class="space-y-5">
     {groups.map((group) => (
-      <div class="grid grid-cols-1 sm:grid-cols-[200px_1fr] gap-y-1 sm:gap-x-6">
-        <dt class="text-[14px] font-medium text-zinc-500 dark:text-zinc-400 sm:pt-0.5">
+      <div class="grid grid-cols-1 sm:grid-cols-[200px_1fr] gap-y-2 sm:gap-x-6">
+        <dt class="text-[13px] font-medium text-zinc-500 dark:text-zinc-400 sm:pt-1">
           {group.label}
         </dt>
-        <dd class="text-[15px] text-zinc-700 dark:text-zinc-300 leading-[1.7]">
-          {group.items}
+        <dd class="flex flex-wrap gap-1.5">
+          {group.items.map((item) => (
+            <span class="inline-block px-2.5 py-0.5 rounded-md text-[12.5px] font-medium text-zinc-700 dark:text-zinc-300 bg-zinc-100 dark:bg-zinc-800 border border-zinc-200 dark:border-zinc-700/70 leading-6">
+              {item}
+            </span>
+          ))}
         </dd>
       </div>
     ))}
